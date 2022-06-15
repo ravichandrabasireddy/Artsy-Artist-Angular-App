@@ -1,0 +1,22 @@
+.artsy-search-results{
+    display: flex;
+    overflow-y: scroll;
+}
+
+.artsy-search-card{
+    width: 16rem;
+}
+
+.artsy-artist-title{
+    background-color: #205375;
+    color: white;
+}
+
+.artsy-artist-title-clicked{
+    background-color: #112B3C;
+    color: white;
+}
+
+.artsy-search-card:hover .artsy-artist-title{
+    background-color: #112B3C !important;
+}

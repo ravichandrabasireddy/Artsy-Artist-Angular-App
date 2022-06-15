@@ -1,5 +1,10 @@
 <router-outlet>
-  <div class="alert alert-success">
-    <strong>Success!</strong> Indicates a successful or positive action.
+  <app-artsy-header></app-artsy-header>
+  <div class="container mt-5">
+    <app-artsy-search (searchResults)="getResults($event)"></app-artsy-search>
+    <div *ngIf="searchResults.length>0 || !noResults" class="mt-5">
+      <app-artsy-search-results [artistSearchResults]="searchResults"></app-artsy-search-results>
+    </div>
   </div>
+  <app-artsy-footer></app-artsy-footer>
 </router-outlet>

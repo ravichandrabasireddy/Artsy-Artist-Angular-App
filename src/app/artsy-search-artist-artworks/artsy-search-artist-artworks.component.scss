@@ -1,0 +1,32 @@
+.artsy-artworks-card {
+    width: 18rem;
+}
+
+.artsy-artworks {
+    margin-bottom: 100px;
+}
+
+.artsy-card-footer {
+    background-color: white;
+}
+
+.artsy-categories-button {
+    background-color: #205375;
+    width: 100%;
+}
+
+.card-footer {
+    border-top: none;
+}
+
+.modal-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    min-height: calc(100vh - 60px);
+
+    @media (max-width: 767px) {
+        min-height: calc(100vh - 20px);
+    }
+}

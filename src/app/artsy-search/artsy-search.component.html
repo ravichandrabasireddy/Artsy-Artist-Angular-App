@@ -1,0 +1,11 @@
+<form [formGroup]="artistSearch">
+    <input class="form-control" formControlName="search" type="text" placeholder="Please enter an artist name."
+        aria-label="Please enter an artist name." (keyup.enter)="onEnter()">
+    <div class="mt-4 d-grid gap-2 d-flex justify-content-center">
+        <button type="button" class="btn btn-primary artsy-search-button" (click)="searchArtist()" [disabled]="searchDisabled">Search
+            <div class="spinner-border text-light spinner-border-sm" role="status" *ngIf="searching">
+                <span class="visually-hidden">Loading...</span>
+            </div></button>
+        <button type="button" class="btn btn-secondary" (click)="clearSearch()">Clear</button>
+    </div>
+</form>

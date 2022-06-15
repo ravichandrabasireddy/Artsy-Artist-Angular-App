@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ArtsrySearch } from './artsy-search/artsy-search.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'artsy-artist';
+  searchResults:any=[]
+  noResults:any=true
+  constructor() { }
+
+  public getToken(){
+  }
+
+  getResults($event:ArtsrySearch){
+    this.searchResults=$event.artistData
+    this.noResults=$event.clearResults
+  }
 }

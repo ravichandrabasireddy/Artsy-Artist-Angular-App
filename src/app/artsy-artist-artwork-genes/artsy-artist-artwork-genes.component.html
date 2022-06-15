@@ -1,0 +1,36 @@
+<div class="modal-content" *ngIf="seletectedArtwork?.id">
+  <div class="modal-header">
+    <div class="d-flex align-items-center">
+      <div class="flex-shrink-0">
+        <img [src]="seletectedArtwork?.['_links']?.thumbnail?.href" class="artsy-genes-header-image"
+          [alt]="seletectedArtwork?.title">
+      </div>
+      <div class="flex-grow-1 ms-3">
+        {{seletectedArtwork?.title}}<br />
+        {{seletectedArtwork?.date}}
+      </div>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <div class="d-flex justify-content-center" *ngIf="loader">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div *ngIf="artistGenes?.length>0" class=" artsy-artworks row">
+      <div *ngFor="let genes of artistGenes;let index=index" class="text-center d-flex justify-content-around col p-4">
+        <div class="artsy-artworks-card card h-100">
+          <img [src]="genes?.['_links']?.thumbnail?.href" class="card-img-top" [alt]="genes?.name">
+          <div class="card-body align-bottom"></div>
+          <div class="card-footer artsy-card-footer">
+            {{genes?.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-danger text-center" role="alert" *ngIf="artistGenes?.length===0">
+      No categories.
+    </div>
+  </div>
+</div>

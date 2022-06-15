@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  artsy: {
+    url:"https://artsy-artist-server.wl.r.appspot.com",
+    searchArtist:"/artist/search",
+    getArtistById:"/get/artist/",
+    getArtistArtwork:"/get/artworks/artist/",
+    getArtworkGenes:"/get/genes/artwork/"
+  }
 };
 
 /*

@@ -1,0 +1,27 @@
+<div>
+    <div *ngIf="artistSearchResults?.length>0">
+        <app-artsy-search-space [artistSearchResult]="artistSearchResults" (artistInfo)='artistSearchInfo=$event'
+            (artistArtworks)='artistSearchArtworks=$event'></app-artsy-search-space>
+        <div *ngIf="artistSearchInfo && artistSearchArtworks" class="mt-5">
+            <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active artsy-tab-color" id="pills-artist-info-tab" data-bs-toggle="pill" data-bs-target="#pills-artist-info" type="button" role="tab" aria-controls="pills-artist-info" aria-selected="true">Artist Info</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link " id="pills-artist-artwork-tab" data-bs-toggle="pill" data-bs-target="#pills-artist-artwork" type="button" role="tab" aria-controls="pills-artist-artwork" aria-selected="true">Artworks</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-artist-info" role="tabpanel" aria-labelledby="pills-artist-info-tab">
+                    <app-artsy-search-artist-info [artistInfo]="artistSearchInfo"></app-artsy-search-artist-info>
+                </div>
+                <div class="tab-pane fade" id="pills-artist-artwork" role="tabpanel" aria-labelledby="pills-artist-artwork-tab">
+                    <app-artsy-search-artist-artworks [artistArtworks]="artistSearchArtworks"></app-artsy-search-artist-artworks>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="artistSearchResults?.length<=0">
+        No results.
+    </div>
+</div>

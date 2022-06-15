@@ -1,0 +1,15 @@
+<div *ngIf="artistSearchResult?.length>0" class="artsy-search-results">
+    <div *ngFor="let artist of artistSearchResult;let index=index" class="card-group">
+        <div class="card h-100 artsy-search-card" (click)="getDetails(artist,index)">
+            <img [src]="artist['_links']['thumbnail']['href']" class="card-img-top" [alt]="artist?.title">
+            <div class="card-body"
+                [ngClass]="{'artsy-artist-title' : !toggle[index], 'artsy-artist-title-clicked': toggle[index]}">
+                <p class="card-text">{{artist?.title}}</p></div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-5" *ngIf="loader">
+    <div class="spinner-border" style="width: 3rem; height: 3rem; color:#205375 ;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
