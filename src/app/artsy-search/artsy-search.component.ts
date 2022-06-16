@@ -25,7 +25,6 @@ export class ArtsySearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.artistSearch.get('search')?.valueChanges.subscribe((value) => {
-      console.log(typeof value)
       if (value === null || value === undefined || value === '') {
         this.searchDisabled = true
       } else {
@@ -46,18 +45,15 @@ export class ArtsySearchComponent implements OnInit {
     let searchValue = this.artistSearch.get('search')?.value
     this.artsyArtistService.searchArtists(searchValue ? searchValue : "")
       .pipe(
-        tap((response) => console.log("Search Data ", response)),
         map((response: any) => response["_embedded"]["results"]),
         map(filteredResponse => filteredResponse.filter(((artist: any) => artist["og_type"] === 'artist'))),
         
       ).subscribe((artistData) => {
         artistData.map((artist:any)=>{
           if(artist["_links"]["thumbnail"]["href"]==='/assets/shared/missing_image.png'){
-            console.log("Artsy Logo Missing")
             artist["_links"]["thumbnail"]["href"]='/assets/artsy_logo.svg'
           }
         })
-        console.log(artistData)
         this.searchResults.emit({artistData:artistData,clearResults:false})
         this.searching = false
       })
